@@ -9,5 +9,5 @@ const (
 	Blink     = "\x1b[5m"
 	Reverse   = "\x1b[7m"
 	Invisible = "\x1b[8m"
-	CrossOut  = "\x1b[9m"
+	Crossout  = "\x1b[9m"
 )
