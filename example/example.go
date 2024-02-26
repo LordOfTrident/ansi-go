@@ -11,7 +11,14 @@ import (
 	"github.com/LordOfTrident/ansi-go"
 )
 
+// 3 digit hex color literals
+var red   = ansi.BgHex("F00")
+var green = ansi.BgHex("0F0")
+var blue  = ansi.BgHex("00F")
+
 var pink = ansi.FgHex("F27BCC")
+// Prefixing the hex color literal with # would also work:
+//     var pink = ansi.FgHex("#F27BCC")
 
 func Pause(secs int, text string) {
 	ansi.Println(ansi.Cursor(false),
@@ -46,6 +53,7 @@ func main() {
 	           ansi.SaveScreen,
 	           ansi.Goto(1, 1))
 
+	ansi.Println(red, "  ", green, "  ", blue, "  ")
 	ansi.Println(ansi.Underline, ansi.Bold, pink, "Hello, world!", ansi.CursorDown(1))
 
 	Pause(5, "Pausing for 5 second(s)!")

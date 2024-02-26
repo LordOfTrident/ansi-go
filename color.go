@@ -82,18 +82,24 @@ func parseHex(hex string) (r uint8, g uint8, b uint8, ok bool) {
 		hex = hex[1:]
 	}
 
-	if len(hex) != 6 {
-		return
-	}
-
 	color32, err := strconv.ParseInt(hex, 16, 32)
 	if err != nil {
 		return
 	}
 
-	ok = true
-	r  = uint8(color32 & 0xFF0000 >> 16)
-	g  = uint8(color32 & 0x00FF00 >> 8)
-	b  = uint8(color32 & 0x0000FF)
+	switch len(hex) {
+	case 6:
+		ok = true
+		r  = uint8(color32 & 0xFF0000 >> 16)
+		g  = uint8(color32 & 0x00FF00 >> 8)
+		b  = uint8(color32 & 0x0000FF)
+
+	case 3:
+		ok = true
+		r  = 17 * uint8(color32 & 0xF00 >> 8)
+		g  = 17 * uint8(color32 & 0x0F0 >> 4)
+		b  = 17 * uint8(color32 & 0x00F)
+	}
+
 	return
 }
