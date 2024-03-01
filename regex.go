@@ -7,9 +7,9 @@ var Regex = regexp.MustCompile("[\u001b\u009b][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(
                                "\\d]*)*)?\u0007)|(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PRZcf" +
                                "-ntqry=><~]))")
 func Strip(text string) string {
-	return ansiRegex.ReplaceAllString(text, "")
+	return Regex.ReplaceAllString(text, "")
 }
 
 func FindNext(text string) []int {
-	return ansiRegex.FindIndexString(text)
+	return Regex.FindStringIndex(text)
 }
