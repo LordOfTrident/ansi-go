@@ -44,34 +44,15 @@ const (
 )
 
 func IsBright16(color uint8) bool {
-	return color >= 8 && color <= 15;
+	return color >= 8 && color <= 15
 }
 
-func Fg16(color uint8) string {
-	if IsBright16(color) {
-		color += 82
-	} else {
-		color += 30
-	}
-
-	return fmt.Sprintf("\x1b[%vm", color)
-}
-
-func Bg16(color uint8) string {
-	if IsBright16(color) {
-		color += 92
-	} else {
-		color += 40
-	}
-
-	return fmt.Sprintf("\x1b[%vm", color)
-}
-
-func Fg256(color uint8) string {
+// TODO: If terminal does not support truecolor or 256 colors, find the closest supported color
+func Fg(color uint8) string {
 	return fmt.Sprintf("\x1b[38;5;%vm", color)
 }
 
-func Bg256(color uint8) string {
+func Bg(color uint8) string {
 	return fmt.Sprintf("\x1b[48;5;%vm", color)
 }
 
