@@ -60,4 +60,7 @@ func main() {
 
 	ansi.Print(ansi.RestoreScreen,
 	           ansi.RestoreCursor)
+
+	// Strip the sequences
+	ansi.Println(ansi.Strip(ansi.Bold + ansi.BlueFg + "Goodbye." + ansi.Reset))
 }
