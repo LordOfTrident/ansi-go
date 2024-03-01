@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	Black   ="\x1b[30m"
+	Black   = "\x1b[30m"
 	Red     = "\x1b[31m"
 	Green   = "\x1b[32m"
 	Yellow  = "\x1b[33m"
@@ -15,14 +15,14 @@ const (
 	Cyan    = "\x1b[36m"
 	White   = "\x1b[37m"
 
-	BlackBg   = "\x1b[30m"
-	RedBg     = "\x1b[31m"
-	GreenBg   = "\x1b[32m"
-	YellowBg  = "\x1b[33m"
-	BlueBg    = "\x1b[34m"
-	MagentaBg = "\x1b[35m"
-	CyanBg    = "\x1b[36m"
-	WhiteBg   = "\x1b[37m"
+	BlackBg   = "\x1b[40m"
+	RedBg     = "\x1b[41m"
+	GreenBg   = "\x1b[42m"
+	YellowBg  = "\x1b[43m"
+	BlueBg    = "\x1b[44m"
+	MagentaBg = "\x1b[45m"
+	CyanBg    = "\x1b[46m"
+	WhiteBg   = "\x1b[47m"
 
 	LightBlack   = "\x1b[90m"
 	LightRed     = "\x1b[91m"
@@ -33,15 +33,39 @@ const (
 	LightCyan    = "\x1b[96m"
 	LightWhite   = "\x1b[97m"
 
-	LightBlackBg   = "\x1b[90m"
-	LightRedBg     = "\x1b[91m"
-	LightGreenBg   = "\x1b[92m"
-	LightYellowBg  = "\x1b[93m"
-	LightBlueBg    = "\x1b[94m"
-	LightMagentaBg = "\x1b[95m"
-	LightCyanBg    = "\x1b[96m"
-	LightWhiteBg   = "\x1b[97m"
+	LightBlackBg   = "\x1b[100m"
+	LightRedBg     = "\x1b[101m"
+	LightGreenBg   = "\x1b[102m"
+	LightYellowBg  = "\x1b[103m"
+	LightBlueBg    = "\x1b[104m"
+	LightMagentaBg = "\x1b[105m"
+	LightCyanBg    = "\x1b[106m"
+	LightWhiteBg   = "\x1b[107m"
 )
+
+func IsBright16(color uint8) bool {
+	return color >= 8 && color <= 15;
+}
+
+func Fg16(color uint8) string {
+	if IsBright16(color) {
+		color += 82
+	} else {
+		color += 30
+	}
+
+	return fmt.Sprintf("\x1b[%vm", color)
+}
+
+func Bg16(color uint8) string {
+	if IsBright16(color) {
+		color += 92
+	} else {
+		color += 40
+	}
+
+	return fmt.Sprintf("\x1b[%vm", color)
+}
 
 func Fg256(color uint8) string {
 	return fmt.Sprintf("\x1b[38;5;%vm", color)
