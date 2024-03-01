@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"regexp"
 )
 
 const Marker = '\x1b'
@@ -15,14 +14,6 @@ func ansiBoolFlag(on bool) string {
 	} else {
 		return "l"
 	}
-}
-
-// Regex from https://github.com/acarl005/stripansi
-var stripRegex = regexp.MustCompile("[\u001b\u009b][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[a-zA-Z" +
-                                    "\\d]*)*)?\u0007)|(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PRZcf" +
-                                    "-ntqry=><~]))")
-func Strip(text string) string {
-	return stripRegex.ReplaceAllString(text, "")
 }
 
 /*
