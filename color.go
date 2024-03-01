@@ -6,14 +6,32 @@ import (
 )
 
 const (
-	Black   = "\x1b[30m"
-	Red     = "\x1b[31m"
-	Green   = "\x1b[32m"
-	Yellow  = "\x1b[33m"
-	Blue    = "\x1b[34m"
-	Magenta = "\x1b[35m"
-	Cyan    = "\x1b[36m"
-	White   = "\x1b[37m"
+	Black   = 0
+	Red     = 1
+	Green   = 2
+	Yellow  = 3
+	Blue    = 4
+	Magenta = 5
+	Cyan    = 6
+	White   = 7
+
+	LightBlack   = 8
+	LightRed     = 9
+	LightGreen   = 10
+	LightYellow  = 11
+	LightBlue    = 12
+	LightMagenta = 13
+	LightCyan    = 14
+	LightWhite   = 15
+
+	BlackFg   = "\x1b[30m"
+	RedFg     = "\x1b[31m"
+	GreenFg   = "\x1b[32m"
+	YellowFg  = "\x1b[33m"
+	BlueFg    = "\x1b[34m"
+	MagentaFg = "\x1b[35m"
+	CyanFg    = "\x1b[36m"
+	WhiteFg   = "\x1b[37m"
 
 	BlackBg   = "\x1b[40m"
 	RedBg     = "\x1b[41m"
@@ -24,14 +42,14 @@ const (
 	CyanBg    = "\x1b[46m"
 	WhiteBg   = "\x1b[47m"
 
-	LightBlack   = "\x1b[90m"
-	LightRed     = "\x1b[91m"
-	LightGreen   = "\x1b[92m"
-	LightYellow  = "\x1b[93m"
-	LightBlue    = "\x1b[94m"
-	LightMagenta = "\x1b[95m"
-	LightCyan    = "\x1b[96m"
-	LightWhite   = "\x1b[97m"
+	LightBlackFg   = "\x1b[90m"
+	LightRedFg     = "\x1b[91m"
+	LightGreenFg   = "\x1b[92m"
+	LightYellowFg  = "\x1b[93m"
+	LightBlueFg    = "\x1b[94m"
+	LightMagentaFg = "\x1b[95m"
+	LightCyanFg    = "\x1b[96m"
+	LightWhiteFg   = "\x1b[97m"
 
 	LightBlackBg   = "\x1b[100m"
 	LightRedBg     = "\x1b[101m"

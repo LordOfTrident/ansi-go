@@ -22,7 +22,7 @@ var pink = ansi.FgHex("F27BCC")
 
 func Pause(secs int, text string) {
 	ansi.Println(ansi.Cursor(false),
-	             ansi.Bold, ansi.LightWhite, text)
+	             ansi.Bold, ansi.LightWhiteFg, text)
 
 	prefix  := pink + "| " + ansi.Reset
 	dotsLen := 4
