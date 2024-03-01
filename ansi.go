@@ -17,6 +17,7 @@ func ansiBoolFlag(on bool) string {
 	}
 }
 
+// Regex from https://github.com/acarl005/stripansi
 var stripRegex = regexp.MustCompile("[\u001b\u009b][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[a-zA-Z" +
                                     "\\d]*)*)?\u0007)|(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PRZcf" +
                                     "-ntqry=><~]))")
