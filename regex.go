@@ -19,7 +19,7 @@ func Count(text string) int {
 }
 
 func LengthNoAnsi(text string) int {
-	return len(text) - Count(text)
+	return len(Strip(text))
 }
 
 func Contains(text string) bool {
