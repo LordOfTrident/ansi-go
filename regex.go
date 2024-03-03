@@ -1,6 +1,9 @@
 package ansi
 
-import "regexp"
+import (
+	"regexp"
+	"unicode/utf8"
+)
 
 // Regex from https://github.com/acarl005/stripansi
 var Regex = regexp.MustCompile("[\u001b\u009b][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[a-zA-Z" +
@@ -20,6 +23,10 @@ func Count(text string) int {
 
 func LengthNoAnsi(text string) int {
 	return len(Strip(text))
+}
+
+func RuneCountNoAnsi(text string) int {
+	return utf8.RuneCountInString(Strip(text))
 }
 
 func Contains(text string) bool {
