@@ -21,11 +21,11 @@ func Count(text string) int {
 	return len(Regex.FindAllString(text, -1))
 }
 
-func LengthNoAnsi(text string) int {
+func SizeNoAnsi(text string) int {
 	return len(Strip(text))
 }
 
-func RuneCountNoAnsi(text string) int {
+func LengthNoAnsi(text string) int {
 	return utf8.RuneCountInString(Strip(text))
 }
 
