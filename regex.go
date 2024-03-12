@@ -69,3 +69,15 @@ func RunePosToByteIndex(text string, runePos int) int {
 func Slice(text string, start int, end int) string {
 	return text[RunePosToByteIndex(text, start):RunePosToByteIndex(text, end)]
 }
+
+// Include the ansi sequences before the first character
+func InclusiveSlice(text string, start int, end int) string {
+	end = RunePosToByteIndex(text, end)
+
+	if start > 0 {
+		start = RunePosToByteIndex(text, start - 1)
+		return text[start:end][1:]
+	} else {
+		return text[start:end]
+	}
+}

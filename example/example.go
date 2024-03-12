@@ -53,7 +53,13 @@ func main() {
 	           ansi.SaveScreen,
 	           ansi.Goto(1, 1))
 
-	ansi.Println("Slicing with ansi: ", ansi.Slice(red + "Hello, " + green + "World!", 7, 12))
+	textToSlice := ansi.RedFg + "Hello, " + ansi.GreenFg + "World!"
+	ansi.Println("Text to slice: ", textToSlice)
+
+	// ansi.InclusiveSlice includes the ansi sequences right before the first character, where as
+	// ansi.Slice does not
+	ansi.Println("Slicing with ansi: ", ansi.InclusiveSlice(textToSlice, 7, 12))
+
 	ansi.Println(red, "  ", green, "  ", blue, "  ")
 	ansi.Println(ansi.Underline, ansi.Bold, pink, "Hello, world!", ansi.CursorDown(1))
 
