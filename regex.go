@@ -32,3 +32,40 @@ func LengthNoAnsi(text string) int {
 func Contains(text string) bool {
 	return Regex.MatchString(text)
 }
+
+// Convert rune index without ansi sequences to index including ansi sequences
+func RunePosToByteIndex(text string, runePos int) int {
+	it         := text
+	pos        := 0
+	snippetIdx := 0
+
+	for {
+		var snippet string
+
+		loc := FindNext(it)
+		if loc == nil {
+			snippet = it
+		} else {
+			snippet = it[:loc[0]]
+		}
+
+		for i := range snippet {
+			if pos == runePos {
+				return snippetIdx + i
+			}
+
+			pos ++
+		}
+
+		if loc == nil {
+			return -1
+		}
+
+		snippetIdx += loc[1]
+		it          = it[loc[1]:]
+	}
+}
+
+func Slice(text string, start int, end int) string {
+	return text[RunePosToByteIndex(text, start):RunePosToByteIndex(text, end)]
+}
